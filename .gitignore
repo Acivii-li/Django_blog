@@ -1,0 +1,7 @@
+.idea
+__pycache__
+rich_text1.zip
+.DS_Store
+.project
+*.pyc
+venv/

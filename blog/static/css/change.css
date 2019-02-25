@@ -1,0 +1,41 @@
+.mr-2 {
+    margin-right: .6rem!important;
+    margin-left: 1rem;
+}
+
+a {
+    color: #0d1010;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 1px;
+    margin-bottom: 20px;
+}
+
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+.img-rounded {
+    border-radius: 1px;
+    transition: opacity 0.5s ease 0s;
+    max-width: 100%;
+}
+.btn {
+    color: #796a6a;
+}
+.btn-outline-info {
+    border-color: #ffffff;
+    color: #51bcda;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.btn {
+    color: #796a6a;
+}

@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+     <article class="media content-section">
+       <div class="col-8 col-sm-6 col-md-3">
+            <img src="{{ object.author.profile.image.url }} " class="img-rounded img-responsive" alt="Rounded Image">
+            <div class="img-details">
+                <div class="author">
+                    <img src="{% static 'img/new_logo.png' %}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+            </div>
+           <a class="mr-2" href="#">{{ object.author }}</a>
+           <small class="text-muted">{{ object.date_posed|date:"Y M d" }}</small>
+        </div>
+      <div class="media-body">
+        <div class="article-metadata">
+            {% if object.author == user %}
+               <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+              </div>
+           {% endif %}
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.text_content }}</p>
+      </div>
+    </article>
+{% endblock content %}
+

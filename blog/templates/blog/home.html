@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+         <article class="media content-section">
+           <div class="col-8 col-sm-6 col-md-3">
+                <img src="{{ post.author.profile.image.url }} " class="img-rounded img-responsive" alt="Rounded Image">
+                <div class="img-details">
+                    <div class="author">
+                        <img src="{% static 'img/new_logo.png' %}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                </div>
+               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+               <small class="text-muted">{{ post.date_posed|date:"Y M d" }}</small>
+            </div>
+          <div class="media-body">
+            <div class="article-metadata">
+            </div>
+            <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+            <p class="article-content">{{ post.text_content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    {% if is_paginated %}
+        {% if page_obj.has_previous  %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% for num in paginator.page_range %}
+            {% if num == page_obj.number %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' or num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next  %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_page }}">Last</a>
+        {% endif %}
+    {% endif %}
+{% endblock content %}
+
