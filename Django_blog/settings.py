@@ -25,7 +25,7 @@ SECRET_KEY = '^fz$l#a&6%5l#(b&f@h+64(%1od%2w_a^no8uzxjnt-!v08*o#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Django_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/')]
+        'DIRS': [os.path.join(BASE_DIR, 'templatates/')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,3 +131,10 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bo.lilbbenren@gmail.com'
+EMAIL_HOST_PASSWORD = 'lizeng909100246'
